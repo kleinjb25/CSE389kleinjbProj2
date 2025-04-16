@@ -28,6 +28,7 @@ protected:
 	UInputAction* IALook;
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enhanced Input")
 	UInputAction* IAJump;
+	bool canJump2x = false;
 
 public:	
 	// Called every frame
