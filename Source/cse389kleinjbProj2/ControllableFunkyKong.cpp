@@ -6,6 +6,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include <Kismet/GameplayStatics.h>
 
 // Sets default values
 AControllableFunkyKong::AControllableFunkyKong()
@@ -19,7 +20,15 @@ AControllableFunkyKong::AControllableFunkyKong()
 void AControllableFunkyKong::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	FTimerHandle timer;
+	GetWorldTimerManager().SetTimer(timer, this, &AControllableFunkyKong::CountDown, 1.f, true, 0.f);
+}
+
+void AControllableFunkyKong::CountDown() {
+	if (seconds > 0)
+		seconds--;
+	else
+		UGameplayStatics::OpenLevel(GetWorld(), "youLose");
 }
 
 // Called every frame

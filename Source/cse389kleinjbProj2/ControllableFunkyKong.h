@@ -29,6 +29,7 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Enhanced Input")
 	UInputAction* IAJump;
 	bool canJump2x = false;
+	
 
 public:	
 	// Called every frame
@@ -39,5 +40,8 @@ public:
 	void Move(const FInputActionValue& value);
 	void Look(const FInputActionValue& value);
 	void Jump(const FInputActionValue& value);
+	void CountDown();
+	UPROPERTY(BlueprintReadOnly)
+	int seconds = 5;
 
 };
